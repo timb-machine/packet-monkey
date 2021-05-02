@@ -20,7 +20,7 @@
 # <http://www.nth-dimension.org.uk/> / <http://www.machine.org.uk/>
 
 rm lib/filters/enabled/all/other
-for filterfilename in lib/filters/enabled/all/*
+for filterfilename in lib/filters/enabled/all/* lib/filters/enabled/bespoke/*
 do
 	printf "!($(cat "${filterfilename}")) and "
 done | sed "s/ and $//g" >lib/filters/enabled/all/other
