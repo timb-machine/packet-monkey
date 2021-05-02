@@ -1,1 +1,1 @@
-tcp and !(x509af.algorithm.id == 1.2.840.113549.1.1.11)
+tcp and tls.handshake.certificate and !(x509af.algorithm.id == 1.2.840.113549.1.1.11 or x509af.algorithm.id == 1.2.840.113549.1.1.1)
