@@ -1,0 +1,1 @@
+udp and (kerberos.etype < 18 or kerberos.etype == 23 or kerberos.etype == 24)
