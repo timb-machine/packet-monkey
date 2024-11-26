@@ -113,15 +113,16 @@ do
 	esac
 	shift
 done
-if [ ! -e "${PCAPFILENAME}" ]
-then
-	usage
-fi
 header
 if [ "${VERBOSE}" != "0" -a "${VERBOSE}" != "1" -a "${VERBOSE}" != "2" ]
 then
 	stdio_message_error "packet-monkey" "the provided verbose level ${VERBOSE} is invalid - use 0, 1 or 2 next time"
 	VERBOSE="1"
+fi
+if [ ! -e "${PCAPFILENAME}" ]
+then
+	stdio_message_error "packet-monkey" "the provided pcap file '${PCAPFILENAME}' is invalid"
+	exit 1
 fi
 if [ -n "${FILTERS}" ]
 then
