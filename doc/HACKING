@@ -1,0 +1,29 @@
+General:
+
+* docs/* exists for a reason, especially docs/CHANGELOG
+  * Changes should match commit messages, barring mistakes
+  * "Bug fix:" should be used to identify minor changes due to
+    coding errors
+  * docs/CHANGELOG should reference filename of changed files
+* Quote correctly
+  * Use double-quotes, not single-quotes
+* Variable names should be descriptive
+* Reference variables as ${variablename}
+* "printf --" unless you have reason not to
+* Avoid unnecessary cats, never use two commands if one will do
+* No unnecessary new lines, the only blocks should be those
+  introduced by code: if/then/else/fi etc
+* Redirects take the form >/path/to/redirect/to (i.e. no space)
+
+lib/misc/*:
+
+* New APIs can be freely added
+* Don't read _ if there's a chance the data may be useful later
+* Validate your input using lib/misc/validate
+
+lib/filters/*:
+
+* Wherever possible ensure you specify the layer 2/3 protocol
+  e.g. udp, tcp minimum, before anything more specific
+  * Do similar at layer 4, if the filter might mistakenly match on
+    other protools

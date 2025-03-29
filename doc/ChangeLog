@@ -1,0 +1,27 @@
+2025-03-29 packet-monkey master
+
+* Added doc/HACKING, doc/ChangeLog
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2025-03-28 packet-monkey 2021 - 2025
+
+* Merge branch 'master' of github.com:timb-machine/packet-monkey
+* Improved error handling as reported by @shhanif
+* Added tls.handshake.server filter
+* Added snmp.community filter
+* Updated README.md
+* Added COPYING
+* Added new filters
+* Fixed typo
+* Added new filters
+* Added tls.handshake.weak filter
+* Improved tls.certs.weak filter
+* Added tls.handshake.weak filter
+* Improved tls.certs.weak
+* Changed how generate-other.sh works to make customisation easier
+* Added new filters
+* Added support for extracting full streams
+* Initial commit
+
+-- Tim Brown <timb@nth-dimension.org.uk>
