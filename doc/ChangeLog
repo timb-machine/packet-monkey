@@ -1,6 +1,7 @@
 2025-03-30 packet-monkey master
 
 * Bug fix: Updated the per-file licensing to close #3
+* Bug fix: Updated references to docs and CHANGELOG to doc and ChangeLog
 
 -- Tim Brown <timb@nth-dimension.org.uk>
 

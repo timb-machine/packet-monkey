@@ -1,10 +1,10 @@
 General:
 
-* docs/* exists for a reason, especially docs/CHANGELOG
+* doc/* exists for a reason, especially doc/ChangeLog
   * Changes should match commit messages, barring mistakes
   * "Bug fix:" should be used to identify minor changes due to
     coding errors
-  * docs/CHANGELOG should reference filename of changed files
+  * doc/ChangeLog should reference filename of changed files
 * Quote correctly
   * Use double-quotes, not single-quotes
 * Variable names should be descriptive
