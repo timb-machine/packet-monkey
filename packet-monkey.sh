@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copyright (c) 2021-2025, Tim Brown
 # Copyright (c) 2021-2025, Cisco International Ltd
 #
