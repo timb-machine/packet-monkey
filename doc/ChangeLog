@@ -1,3 +1,9 @@
+2025-03-30 packet-monkey master
+
+* Bug fix: Updated the per-file licensing to close #3
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
 2025-03-29 packet-monkey master
 
 * Added doc/HACKING, doc/ChangeLog
