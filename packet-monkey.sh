@@ -131,7 +131,7 @@ then
 fi
 if [ -n "${FILTERS}" ]
 then
-	for filterfilename in $(printf "${FILTERS}" | tr -d " " | tr "," " ")
+	for filterfilename in $(printf -- "%s" "${FILTERS}" | tr -d " " | tr "," " ")
 	do
 		if [ ! -e "lib/filters/${filterfilename}" ]
 		then
@@ -141,13 +141,13 @@ then
         		outputfilename="$(basename "${PCAPFILENAME}" | sed "s/.pcap//g")-${filtername}.pcap"
 			filter="$(cat "lib/filters/${filterfilename}")"
 			stdio_message_log "packet-monkey" "${filtername}: ${filter}"
-			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf "${filter}" | grep "tcp")" ]
+			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "tcp")" ]
 			then
 				stdio_message_log "packet-monkey" "${filtername}: mangling tcp sessions"
 				stdio_message_debug "tshark" "$(tshark -r "${PCAPFILENAME}" -T fields -e tcp.srcport -2 -R "${filter}" | awk '{ printf(" %s tcp.port == %s", sep, $1); sep="||" }')"
 				tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e tcp.srcport -2 -R "${filter}" | awk '{ printf("%s tcp.port == %s", sep, $1); sep="||" }')"
 			else
-				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf "${filter}" | grep "udp")" ]
+				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "udp")" ]
 				then
 					stdio_message_log "packet-monkey" "${filtername}: mangling udp sessions"
 					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}" | awk '{ printf(" %s udp.port == %s", sep, $1); sep="||" }')"
@@ -169,12 +169,12 @@ else
 			outputfilename="$(basename "${PCAPFILENAME}" | sed "s/.pcap//g")-${filtername}.pcap"
 			filter="$(cat "${filterfilename}")"
 			stdio_message_log "packet-monkey" "${filtername}: ${filter}"
-			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf "${filter}" | grep "tcp")" ]
+			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "tcp")" ]
 			then
 				stdio_message_log "packet-monkey" "${filtername}: mangling tcp sessions"
 				tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e tcp.srcport -2 -R "${filter}" | awk '{ printf("%s tcp.port == %s", sep, $1); sep="||" }')"
 			else
-				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf "${filter}" | grep "udp")" ]
+				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "udp")" ]
 				then
 					stdio_message_log "packet-monkey" "${filtername}: mangling udp sessions"
 					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}" | awk '{ printf("%s udp.port == %s", sep, $1); sep="||" }')"

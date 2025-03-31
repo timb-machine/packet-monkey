@@ -27,6 +27,6 @@
 rm lib/filters/enabled/all/other
 for filterfilename in lib/filters/enabled/all/* lib/filters/enabled/bespoke/*
 do
-	printf "!($(cat "${filterfilename}")) and "
+	printf -- "%s" "!($(cat "${filterfilename}")) and "
 done | sed "s/ and $//g" >lib/filters/enabled/all/other
 printf "don't forget to fix the quoting\n"
