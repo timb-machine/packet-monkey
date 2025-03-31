@@ -1,3 +1,13 @@
+2025-03-31 packet-monkey master
+
+* Merge pull request #1 from iamleot/env-bash-shebang
+ * Make bash shebangs more agnostic (do not rely on hardcoded `/bin/bash`)
+* Merge pull request #2 from iamleot/use-actual-and-in-tests
+ * Do not use `-a` in test(1)
+* Updated doc/ChangeLog
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
 2025-03-30 packet-monkey master
 
 * Bug fix: Updated the per-file licensing to close #3
