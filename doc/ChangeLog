@@ -4,6 +4,7 @@
 * Added new filters
  * Added lldp filter
  * Added mysql filter
+* Updated other filter to exclude mysql and lldp
 
 -- Tim Brown <timb@nth-dimension.org.uk>
 
