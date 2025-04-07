@@ -1,3 +1,12 @@
+2025-04-07 packet-monkey master
+
+* Improved tls.weak filters
+* Added new filters
+ * Added lldp filter
+ * Added mysql filter
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
 2025-03-31 packet-monkey master
 
 * Merge pull request #1 from iamleot/env-bash-shebang
