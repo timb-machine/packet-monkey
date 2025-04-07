@@ -1,1 +1,1 @@
-tcp and !(tls.record.version == 0x0301 and tls.handshake.version == 0x0303) and !(tls.record.version == 0x0303)
+tcp and tls and !(tls.record.version == 0x0301 and tls.handshake.version == 0x0303) and !(tls.record.version == 0x0303)
