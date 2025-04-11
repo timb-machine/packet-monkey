@@ -139,7 +139,7 @@ then
 		else
 			filtername="$(basename "${filterfilename}")"
         		outputfilename="$(basename "${PCAPFILENAME}" | sed "s/.pcap//g")-${filtername}.pcap"
-			filter="$(cat "lib/filters/${filterfilename}")"
+			filter="$(cat "lib/filters/${filterfilename}" | grep -v "^#")"
 			stdio_message_log "packet-monkey" "${filtername}: ${filter}"
 			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "tcp")" ]
 			then
@@ -167,7 +167,7 @@ else
 		do
 			filtername="$(basename "${filterfilename}")"
 			outputfilename="$(basename "${PCAPFILENAME}" | sed "s/.pcap//g")-${filtername}.pcap"
-			filter="$(cat "${filterfilename}")"
+			filter="$(cat "${filterfilename}" | grep -v "^#")"
 			stdio_message_log "packet-monkey" "${filtername}: ${filter}"
 			if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "tcp")" ]
 			then
