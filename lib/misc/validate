@@ -34,7 +34,7 @@ validateincluded=1
 validate_matches_regex () {
 	value="${1}"
 	regex="${2}"
-	if [ -n "$(printf "%s" "${value}" | egrep -- "$regex")" ]
+	if [ -n "$(printf "%s" "${value}" | grep -E -- "$regex")" ]
 	then
 		printf -- "1\n"
 	else
