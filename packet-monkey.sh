@@ -81,6 +81,7 @@ usage () {
 # TODO make it use lib/misc/validate
 COLORING="0"
 VERBOSE="1"
+DELETING="0"
 TYPE="all"
 FILTERS=""
 STREAMS="0"
@@ -97,10 +98,13 @@ do
 		--color)
 			COLORING="1"
 			;;
-		--verbose)
-			shift
-			VERBOSE="${1}"
-			;;
+                --verbose)
+                        shift
+                        VERBOSE="${1}"
+                        ;;
+                --delemptypcap|-d)
+                        DELETING="1"
+                        ;;
 		--type|-t)
 			shift
 			TYPE="${1}"
@@ -177,7 +181,7 @@ else
 				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "udp")" ]
 				then
 					stdio_message_log "packet-monkey" "${filtername}: mangling udp sessions"
-					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}" | awk '{ printf("%s udp.port == %s", sep, $1); sep="||" }')"
+					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}"  awk '{ printf("%s udp.port == %s", sep, $1); sep="||" }')"
 				else
 					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "${filter}"
 				fi
@@ -186,4 +190,18 @@ else
 		done
 	fi
 fi
+
+if [ "${DELETING}" -eq 1 ]
+then
+    stdio_message_log "packet-monkey" "Checking generated pcap files, deleting the empty one"
+    BASEFN=$(basename "${PCAPFILENAME}" | sed "s/.pcap//g")
+    for pcapfile in $(ls ${BASEFN}-*.pcap)
+    do
+        if [ -e ${pcapfile} -a $(wc -l ${pcapfile} | awk '{print $1}') -eq 2 ]
+        then
+                rm ${pcapfile}
+        fi
+    done
+fi
+
 exit 0
