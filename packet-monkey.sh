@@ -181,7 +181,7 @@ else
 				if [ "${STREAMS}" -eq 1 ] && [ -n "$(printf -- "%s" "${filter}" | grep "udp")" ]
 				then
 					stdio_message_log "packet-monkey" "${filtername}: mangling udp sessions"
-					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}"  awk '{ printf("%s udp.port == %s", sep, $1); sep="||" }')"
+					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "$(tshark -r "${PCAPFILENAME}" -T fields -e udp.srcport -2 -R "${filter}" | awk '{ printf("%s udp.port == %s", sep, $1); sep="||" }')"
 				else
 					tshark -r "${PCAPFILENAME}" -w "${outputfilename}" -2 -R "${filter}"
 				fi
