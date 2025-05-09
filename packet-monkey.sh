@@ -59,6 +59,7 @@ usage () {
 	printf "\t--help\tdisplay this help and exit\n"
 	printf "\t--version\tdisplay version and exit\n"
 	printf "\t--color\tenable output coloring\n"
+	printf "\t--delemptypcap\tdelete empty pcap slices\";
 	printf "\t--verbose\tverbose level (0-2, default: 1)\n"
 	printf "\t--type\tselect from one of the following filter types:\n"
 	for filtertype in lib/filters/enabled/*

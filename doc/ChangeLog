@@ -3,6 +3,7 @@
 * Merge feature branches from https://gitlab.com/Gzobra/packet-monkey
  * Add delete empty file, based on # lines in pcap
  * Bug fix: egrep which is now deprecated, switch to "grep -E"
+ * Bug fix: Added option to delete empty files to the help text
 
 -- Tim Brown <timb@nth-dimension.org.uk>
 
