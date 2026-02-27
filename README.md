@@ -9,4 +9,3 @@ To use this tool:
 More complicated uses are also possible.
 
 For any queries about the contents of this repository please contact [Security Advisory EMEAR](mailto:css-adv-outreach@cisco.com).
-
